@@ -62,11 +62,27 @@
 
     [self addButtonTargets];
     
+    
     for (UIView *viewToAdd in @[self.webView, self.textField, self.backButton, self.forwardButton, self.stopButton, self.reloadButton]) {
         [mainView addSubview:viewToAdd];
     }
     
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"BlocBrowser", @"BlocBrowser")
+                                                                   message: @"Welcome! Surf's up!"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *continueAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Get Surfing", nil)
+                                                       style:UIAlertActionStyleCancel handler:nil];
+    
+    [alert addAction:continueAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+
+
+    [self updateButtonsAndTitle];
+
     self.view = mainView;
+
 }
 
 - (void)viewDidLoad {
