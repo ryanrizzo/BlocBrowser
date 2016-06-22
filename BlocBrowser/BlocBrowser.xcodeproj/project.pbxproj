@@ -12,6 +12,7 @@
 		15135A871D15D21500F12EF5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15135A861D15D21500F12EF5 /* ViewController.m */; };
 		15135A8C1D15D21500F12EF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15135A8B1D15D21500F12EF5 /* Assets.xcassets */; };
 		15135A8F1D15D21500F12EF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15135A8D1D15D21500F12EF5 /* LaunchScreen.storyboard */; };
+		15B97C041D1AE7CD0047290E /* AwesomeFloatingToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B97C031D1AE7CD0047290E /* AwesomeFloatingToolbar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,8 @@
 		15135A8B1D15D21500F12EF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15135A8E1D15D21500F12EF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15135A901D15D21500F12EF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15B97C021D1AE7CD0047290E /* AwesomeFloatingToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeFloatingToolbar.h; sourceTree = "<group>"; };
+		15B97C031D1AE7CD0047290E /* AwesomeFloatingToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeFloatingToolbar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			children = (
 				15135A821D15D21500F12EF5 /* AppDelegate.h */,
 				15135A831D15D21500F12EF5 /* AppDelegate.m */,
+				15B97C021D1AE7CD0047290E /* AwesomeFloatingToolbar.h */,
+				15B97C031D1AE7CD0047290E /* AwesomeFloatingToolbar.m */,
 				15135A851D15D21500F12EF5 /* ViewController.h */,
 				15135A861D15D21500F12EF5 /* ViewController.m */,
 				15135A8B1D15D21500F12EF5 /* Assets.xcassets */,
@@ -149,6 +154,7 @@
 				15135A871D15D21500F12EF5 /* ViewController.m in Sources */,
 				15135A841D15D21500F12EF5 /* AppDelegate.m in Sources */,
 				15135A811D15D21500F12EF5 /* main.m in Sources */,
+				15B97C041D1AE7CD0047290E /* AwesomeFloatingToolbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +303,7 @@
 				15135A951D15D21500F12EF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
