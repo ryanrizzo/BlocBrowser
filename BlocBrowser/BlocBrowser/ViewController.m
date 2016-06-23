@@ -29,6 +29,17 @@
 #pragma mark - UIViewController
 
 - (void)loadView {
+
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
+    
     UIView *mainView = [UIView new];
     
     self.webView = [[WKWebView alloc] init];
@@ -55,27 +66,15 @@
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *continueAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Get Surfing", nil)
-                                                       style:UIAlertActionStyleCancel handler:nil];
+                                                             style:UIAlertActionStyleCancel handler:nil];
     
     [alert addAction:continueAction];
     
     [self presentViewController:alert animated:YES completion:nil];
-
-
+    
     [self updateButtonsAndTitle];
-
+    
     self.view = mainView;
-
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
-    
 }
 
 #pragma mark - AwesomeFloatingToolbarDelegate
