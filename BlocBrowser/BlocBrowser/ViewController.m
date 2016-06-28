@@ -26,6 +26,22 @@
 
 @implementation ViewController
 
+-(void)floatingToolbar:(AwesomeFloatingToolbar *)toolbar didTryToClickButtonWithLabel:(UILabel *)label{
+    
+    if ([label.text isEqual:kWebBrowserBackString]) {
+        [self.webView goBack];
+        
+    } else if ([label.text isEqual:kWebBrowserForwardString]) {
+        [self.webView goForward];
+        
+    } else if ([label.text isEqual:kWebBrowserStopString]) {
+        [self.webView stopLoading];
+        
+    } else if ([label.text isEqual:kWebBrowserRefreshString]) {
+        [self.webView reload];
+    }
+}
+
 #pragma mark - UIViewController
 
 - (void)loadView {
@@ -81,17 +97,7 @@
 
 #pragma mark - AwesomeFloatingToolbarDelegate
 
-- (void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didSelectButtonWithTitle:(NSString *)title {
-    if ([title isEqual:kWebBrowserBackString]) {
-        [self.webView goBack];
-    } else if ([title isEqual:kWebBrowserForwardString]) {
-        [self.webView goForward];
-    } else if ([title isEqual:kWebBrowserStopString]) {
-        [self.webView stopLoading];
-    } else if ([title isEqual:kWebBrowserRefreshString]) {
-        [self.webView reload];
-    }
-}
+
 
 
 -(void) viewWillLayoutSubviews {

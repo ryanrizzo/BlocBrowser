@@ -22,6 +22,8 @@
 
 - (void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didTryToPressWithColors:(NSArray *)colors;
 
+- (void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didTryToClickButtonWithLabel:(UILabel *)label;
+
 @end
 
 @interface AwesomeFloatingToolbar : UIView

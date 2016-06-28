@@ -14,7 +14,6 @@
 @property (nonatomic, strong) NSArray *colors;
 @property (nonatomic, strong) NSArray *labels;
 @property (nonatomic, weak) UILabel *currentLabel;
-//@property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
 @property (nonatomic, strong) UIPinchGestureRecognizer *pinchGesture;
 @property (nonatomic, strong) UILongPressGestureRecognizer *pressGesture;
@@ -133,22 +132,9 @@
 }
 
 -(void)buttonPressed:(UIButton *)button {
-    NSLog(@"Button Pressed");
+    NSLog(@"button is pressed");
+    [self.delegate floatingToolbar:self didTryToClickButtonWithLabel:button.titleLabel];
 }
-
-
-//- (void) tapFired:(UITapGestureRecognizer *)recognizer {
-//    if (recognizer.state == UIGestureRecognizerStateRecognized) { // #3
-//        CGPoint location = [recognizer locationInView:self]; // #4
-//        UIView *tappedView = [self hitTest:location withEvent:nil]; // #5
-//        
-//        if ([self.labels containsObject:tappedView]) { // #6
-//            if ([self.delegate respondsToSelector:@selector(floatingToolbar:didSelectButtonWithTitle:)]) {
-//                [self.delegate floatingToolbar:self didSelectButtonWithTitle:((UILabel *)tappedView).text];
-//            }
-//        }
-//    }
-//}
 
 - (void) panFired:(UIPanGestureRecognizer *)recognizer {
     if (recognizer.state == UIGestureRecognizerStateChanged) {
