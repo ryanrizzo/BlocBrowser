@@ -54,7 +54,7 @@
     self.textField.backgroundColor = [UIColor colorWithWhite:220/255.0f alpha:1];
     self.textField.delegate = self;
     
-    self.awesomeToolbar = [[AwesomeFloatingToolbar alloc] initWithFourTitles:@[kWebBrowserBackString, kWebBrowserForwardString, kWebBrowserStopString, kWebBrowserRefreshString]];
+    self.awesomeToolbar = [[AwesomeFloatingToolbar alloc] initWithFourTitles:@[kWebBrowserBackString, kWebBrowserForwardString, kWebBrowserStopString, kWebBrowserRefreshString]andFourColors:@[[UIColor colorWithRed:199/255.0 green:158/255.0 blue:203/255.0 alpha:1],[UIColor colorWithRed:255/255.0 green:105/255.0 blue:97/255.0 alpha:1],[UIColor colorWithRed:222/255.0 green:165/255.0 blue:164/255.0 alpha:1],[UIColor colorWithRed:255/255.0 green:179/255.0 blue:71/255.0 alpha:1]]];
     self.awesomeToolbar.delegate = self;
     
     for (UIView *viewToAdd in @[self.webView, self.textField, self.awesomeToolbar]) {
@@ -75,6 +75,8 @@
     [self updateButtonsAndTitle];
     
     self.view = mainView;
+    
+    self.awesomeToolbar.frame = CGRectMake(110, 500, 150, 90);
 }
 
 #pragma mark - AwesomeFloatingToolbarDelegate
@@ -104,8 +106,8 @@
     self.textField.frame = CGRectMake(0, 0, width, itemHeight);
     self.webView.frame = CGRectMake(0, CGRectGetMaxY(self.textField.frame), width, browserHeight);
 
+
     
-    self.awesomeToolbar.frame = CGRectMake(110, 500, 150, 90);
 }
 
 #pragma mark - UITextFieldDelegate
@@ -212,6 +214,54 @@
     if (CGRectContainsRect(self.view.bounds, potentialNewFrame)) {
         toolbar.frame = potentialNewFrame;
     }
+}
+
+- (void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didTryToPinchWithScale:(CGFloat)scale {
+    /*
+     Get the view's current transform
+     Scale the transform
+     Set it back
+     */
+    
+    CGAffineTransform transform = toolbar.transform;
+    transform = CGAffineTransformScale(transform, scale, scale);
+    toolbar.transform = transform;
+}
+
+-(void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didTryToPressWithColors:(NSArray *)colors{
+    
+    NSMutableArray *rotatedColors = [[NSMutableArray alloc] init];
+    UIColor *firstColor = [[UIColor alloc] init];
+    
+    for (UIColor *color in colors){
+        if (color == [colors firstObject]){
+            firstColor = color;
+        }else{
+            [rotatedColors addObject:color];
+        }
+    }
+    [rotatedColors addObject:firstColor];
+    NSArray *newColorSet = [rotatedColors copy];
+    
+
+    
+    NSLog(@"rotate!");
+
+    UIView *mainView = [UIView new];
+    self.awesomeToolbar = [[AwesomeFloatingToolbar alloc] initWithFourTitles:@[kWebBrowserBackString, kWebBrowserForwardString, kWebBrowserStopString, kWebBrowserRefreshString] andFourColors:newColorSet];
+    
+    self.awesomeToolbar.delegate = self;
+    
+    for (UIView *viewToAdd in @[self.webView, self.textField, self.awesomeToolbar]) {
+        [mainView addSubview:viewToAdd];
+    }
+    
+    
+    
+    self.view = mainView;
+    
+    self.awesomeToolbar.frame = toolbar.frame;
+    
 }
 
 @end
